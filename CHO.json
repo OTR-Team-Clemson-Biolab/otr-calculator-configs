@@ -1,0 +1,101 @@
+{
+    "Name": "CHO",
+    "Plots": [1, 2, 3, 4, 5],
+    "SimulationAllowed": true,
+    "Processing": {
+        "mat": {
+            "LoadType": "load",
+            "VariableName": "data",
+            "VariableType": "timeseries",
+            "Columns": {
+                "Time": {
+                    "ColumnName": "Time"
+                },
+                "MassFlow": {
+                    "ColumnNum": 28,
+                    "ConversionFactor": 60
+                },
+                "Pressure": {
+                    "ColumnNum": 20,
+                    "ConversionFactor": 100000
+                },
+                "y3": {
+                    "ColumnNum": 17,
+                    "ConversionFactor": 0.01
+                },
+                "Volume": {
+                    "ColumnNum": 29
+                },
+                "Temperature": {
+                    "ColumnNum": 19,
+                    "AdditionFactor": 273.15
+                },
+                "y0": {
+                    "Calculation": "0.2095 * (0.95 - (InputData.('50') / 100)) + (InputData.('50') / 100)"
+                },
+                "FeedPumpRate": {
+                    "ColumnNum": 46
+                },
+                "StirSpeed": {
+                    "ColumnNum": 4
+                },
+                "DissolvedOxygen": {
+                    "ColumnNum": 10
+                }
+            }
+        }
+    },
+    "OutputColumns": [
+        {
+            "Name": "Time (h)",
+            "DataColumn": "Time",
+            "ConversionFactor": 0.00027777777777777777777777777778
+        },
+        {
+            "Name": "Feed Pump Rate (% Maximum)",
+            "DataColumn": "FeedPumpRate"
+        },
+        {
+            "Name": "Stir Speed (rpm)",
+            "DataColumn": "StirSpeed"
+        },
+        {
+            "Name": "Pressure (Pa)",
+            "DataColumn": "Pressure"
+        },
+        {
+            "Name": "Volume (L)",
+            "DataColumn": "Volume"
+        },
+        {
+            "Name": "y0 (mol/mol)",
+            "DataColumn": "y0"
+        },
+        {
+            "Name": "y0 (%)",
+            "DataColumn": "y0",
+            "ConversionFactor": 100
+        },
+        {
+            "Name": "Mf (L/h)",
+            "DataColumn": "MassFlow"
+        },
+        {
+            "Name": "DO (%)",
+            "DataColumn": "DissolvedOxygen"
+        },
+        {
+            "Name": "y3 (mol/mol)",
+            "DataColumn": "y3"
+        },
+        {
+            "Name": "y3 (%)",
+            "DataColumn": "y3",
+            "ConversionFactor": 100
+        },
+        {
+            "Name": "Temp (K)",
+            "DataColumn": "Temperature"
+        }
+    ]
+}

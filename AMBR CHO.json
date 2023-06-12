@@ -1,0 +1,82 @@
+{
+    "Name": "AMBR CHO",
+    "Plots": [1,3],
+    "SimulationAllowed": false,
+    "Processing": {
+        "csv": {
+            "LoadType": "readtable",
+            "PostScript": "AMBRCHO_PostScript",
+            "Columns": {
+                "Time": {
+                    "ColumnName": "Time",
+                    "ConversionFactor": 3600
+                },
+                "Pressure": {
+                    "ColumnName": "bioreactor pressure reading",
+                    "ConversionFactor": 100
+                },
+                "y0": {
+                    "ColumnName": "inlet o2",
+                    "ConversionFactor": 0.01
+                },
+                "Volume": {
+                    "ColumnName": "volume",
+                    "ConversionFactor": 0.001
+                },
+                "MassFlow": {
+                    "ColumnName": "total gas flow",
+                    "ConversionFactor": 0.06
+                },
+                "y3": {
+                    "ColumnName": "offgas o2",
+                    "ConversionFactor": 0.01
+                },
+                "Temperature": {
+                    "ColumnName": "temperature",
+                    "AdditionFactor": 273.15
+                }
+            }
+        }
+    },
+    "OutputColumns": [
+        {
+            "Name": "Time (h)",
+            "DataColumn": "Time",
+            "ConversionFactor": 0.00027777777777777778
+        },
+        {
+            "Name": "Pressure (Pa)",
+            "DataColumn": "Pressure"
+        },
+        {
+            "Name": "Volume (L)",
+            "DataColumn": "Volume"
+        },
+        {
+            "Name": "y0 (mol/mol)",
+            "DataColumn": "y0"
+        },
+        {
+            "Name": "y0 (%)",
+            "DataColumn": "y0",
+            "ConversionFactor": 100
+        },
+        {
+            "Name": "Mf (L/h)",
+            "DataColumn": "MassFlow"
+        },
+        {
+            "Name": "y3 (mol/mol)",
+            "DataColumn": "y3"
+        },
+        {
+            "Name": "y3 (%)",
+            "DataColumn": "y3",
+            "ConversionFactor": 100
+        },
+        {
+            "Name": "Temp (K)",
+            "DataColumn": "Temperature"
+        }
+    ]
+}
