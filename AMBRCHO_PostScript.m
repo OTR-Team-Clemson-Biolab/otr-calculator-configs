@@ -3,6 +3,13 @@ function ModifiedData = AMBRCHO_PreScript(Data)
     global p_state;
     global processing_fig;
     processing_fig = uifigure;
+
+    % get start date and end date
+    start_date = Data.temp_DateTime(1);
+    end_date = Data.temp_DateTime(end);
+    Data.temp_DateTime = [];
+
+    disp("Data range: " + string(start_date) + " to " + string(end_date));
     
     processing_figure();
 
@@ -12,15 +19,6 @@ function ModifiedData = AMBRCHO_PreScript(Data)
     end
 
     Time = seconds(Data.Time);
-
-    start_date = p_state.startDate;
-    start_date.Hour = 9;
-    start_date.Minute = 0;
-    start_date.Second = 0;
-    end_date = p_state.endDate;
-    end_date.Hour = 23;
-    end_date.Minute = 59;
-    end_date.Second = 59;
 
     % convert date to datetime object
     date_format_string = 'yyyy-MM-dd''T''HH:mm:ss';
@@ -87,37 +85,21 @@ function processing_figure()
     titleLabel.Layout.Column = [1,4];
     
     % Column 1 Subgrid
-    column1subgrid = uigridlayout(gl, [11, 1]);
-    column1subgrid.RowHeight = {'fit', 'fit', 0, 'fit', 'fit', 'fit', 'fit', 10, 'fit', 'fit', 'fit'};
+    column1subgrid = uigridlayout(gl, [6, 1]);
+    column1subgrid.RowHeight = {'fit', 'fit', 10, 'fit', 'fit', 'fit'};
     column1subgrid.ColumnWidth = {250};
     column1subgrid.Layout.Row = 3;
     column1subgrid.Layout.Column = 1;
-    
-    p_state.items_set = struct();
-    label1 = uilabel(column1subgrid, "Text", "Start Date:");
-    label1.Layout.Row = 1;
-
-    startDateInput = uidatepicker(column1subgrid, 'DisplayFormat', 'MM/dd/yyyy');
-    startDateInput.Layout.Row = 2;
-    p_state.items_set.start_date_set = false;
-
-    label2 = uilabel(column1subgrid, 'Text', "End Date:");
-    label2.Layout.Row = 4;
-
-    endDateInput = uidatepicker(column1subgrid, 'DisplayFormat', 'MM/dd/yyyy');
-    endDateInput.Layout.Row = 5;
-    p_state.items_set.end_date_set = false;
 
     label3 = uilabel(column1subgrid, 'Text', 'Elevation (m):');
-    label3.Layout.Row = 6;
+    label3.Layout.Row = 1;
 
     elevationInput = uieditfield(column1subgrid, 'Value', '255');
-    elevationInput.Layout.Row = 7;
+    elevationInput.Layout.Row = 2;
     p_state.elevation = 255;
 
     uploadWeatherButton = uibutton(column1subgrid, "Text", '1. Upload Weather Data');
-    uploadWeatherButton.Layout.Row = 9;
-    uploadWeatherButton.Enable = 'off';
+    uploadWeatherButton.Layout.Row = 4;
 
     weatherButtonInstructions = uilabel(column1subgrid, "Text", ...
         "To download the required weather files, go to the link below. " + ...
@@ -125,38 +107,20 @@ function processing_figure()
         "the experiment took place into the date selector. Click download " + ...
         "on the first option you see. The .csv file that is downloaded is " + ...
         "what you should upload here.", 'WordWrap', 'on');
-    weatherButtonInstructions.Layout.Row = 10;
+    weatherButtonInstructions.Layout.Row = 5;
 
     weatherLink = uihyperlink(column1subgrid, 'Text', 'NOAA Data Search', ...
         'URL', 'https://www.ncei.noaa.gov/access/search/data-search/global-hourly');
-    weatherLink.Layout.Row = 11;
+    weatherLink.Layout.Row = 6;
     
     % button behavior
     uploadWeatherButton.ButtonPushedFcn = {@uploadWeatherHandler};
-    startDateInput.ValueChangedFcn = {@dateInputChanged, "start", uploadWeatherButton};
-    endDateInput.ValueChangedFcn = {@dateInputChanged, "end", uploadWeatherButton};
     elevationInput.ValueChangedFcn = {@elevationInputHandler};
 end
 
 function elevationInputHandler(src, ~)
     global p_state;
     p_state.elevation = str2double(src.Value);
-end
-
-function dateInputChanged(src, ~, s, weatherUpload)
-    global p_state;
-    switch s
-        case "start"
-            p_state.startDate = src.Value;
-            p_state.items_set.start_date_set = true;
-        case "end"
-            p_state.endDate = src.Value;
-            p_state.items_set.end_date_set = true;
-    end
-
-    if p_state.items_set.start_date_set && p_state.items_set.end_date_set
-        weatherUpload.Enable = 'on';
-    end
 end
 
 function uploadWeatherHandler(src, ~)

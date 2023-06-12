@@ -1,15 +1,15 @@
 {
     "Name": "AMBR CHO",
-    "Plots": [1,3],
-    "SimulationAllowed": false,
+    "Plots": [1,3,4,5],
+    "SimulationAllowed": true,
     "Processing": {
-        "csv": {
+        "xlsx": {
             "LoadType": "readtable",
+            "PreScript": "AMBRCHO_PreScript",
             "PostScript": "AMBRCHO_PostScript",
             "Columns": {
                 "Time": {
-                    "ColumnName": "Time",
-                    "ConversionFactor": 3600
+                    "ColumnName": "Time"
                 },
                 "Pressure": {
                     "ColumnName": "bioreactor pressure reading",
@@ -34,6 +34,15 @@
                 "Temperature": {
                     "ColumnName": "temperature",
                     "AdditionFactor": 273.15
+                },
+                "DissolvedOxygen": {
+                    "ColumnName": "do"
+                },
+                "StirSpeed": {
+                    "ColumnName": "stir speed"
+                },
+                "temp_DateTime": {
+                    "ColumnName": "DateTime"
                 }
             }
         }
@@ -77,6 +86,14 @@
         {
             "Name": "Temp (K)",
             "DataColumn": "Temperature"
+        },
+        {
+            "Name": "Dissolved Oxygen (%)",
+            "DataColumn": "DissolvedOxygen"
+        },
+        {
+            "Name": "Stir Speed (rpm)",
+            "DataColumn": "StirSpeed"
         }
     ]
 }
