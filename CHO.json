@@ -7,6 +7,7 @@
             "LoadType": "load",
             "VariableName": "data",
             "VariableType": "timeseries",
+            "PostScript": "CHO_PostScript",
             "Columns": {
                 "Time": {
                     "ColumnName": "Time"

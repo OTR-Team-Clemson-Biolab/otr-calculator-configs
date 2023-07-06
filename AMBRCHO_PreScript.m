@@ -1,4 +1,18 @@
 function InputData = AMBRCHO_PreScript(InputData)
+    % This PreScript is intended to be used for data coming from the AMBR
+    % machine. It does the following to the InputData:
+    % 1. Clips the start of the data to the beginning of the "Innoculation"
+    % phase.
+    % 2. Processes the date time column to produce a seconds column
+    % starting from zero.
+    %
+    % The following columns are modified/created/deleted:
+    % - "Date Time" is deleted - this column is a vector of strings that
+    % represent datetime objects
+    % - "DateTime" is created - this column is a vector of datetime objects
+    % - "Time" is created - this column is a vector of numbers representing
+    % the number of seconds since the start of the innoculation phase.
+
     % take input data get datetime column (format is 18-Feb-2019 04:35:00)
     InputData.DateTime = datetime(InputData.("Date Time"),'InputFormat','dd-MMM-yyyy HH:mm:ss');
 

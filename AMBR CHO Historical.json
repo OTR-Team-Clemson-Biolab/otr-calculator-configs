@@ -1,12 +1,12 @@
 {
-    "Name": "AMBR CHO",
+    "Name": "AMBR CHO (Historical)",
     "Plots": [1,3,4,5],
     "SimulationAllowed": true,
     "Processing": {
         "xlsx": {
             "LoadType": "readtable",
             "PreScript": "AMBRCHO_PreScript",
-            "PostScript": "AMBRCHO_PostScript",
+            "PostScript": "AMBRCHO_Historical_PostScript",
             "Columns": {
                 "Time": {
                     "ColumnName": "Time"
