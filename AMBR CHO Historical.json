@@ -2,6 +2,14 @@
     "Name": "AMBR CHO (Historical)",
     "Plots": [1,3,4,5],
     "SimulationAllowed": true,
+    "Constants": {
+        "N0": 50,
+        "tau2": 55,
+        "V0": 0.5,
+        "Vt": 1.5,
+        "discount": 0.9999,
+        "O2Concentration": 0.2024
+    },
     "Processing": {
         "xlsx": {
             "LoadType": "readtable",
@@ -25,7 +33,8 @@
                 },
                 "MassFlow": {
                     "ColumnName": "total gas flow",
-                    "ConversionFactor": 0.06
+                    "ConversionFactor": 0.06,
+                    "Comment": "Original units are mL/min converted to L/h"
                 },
                 "y3": {
                     "ColumnName": "offgas o2",

@@ -2,6 +2,14 @@
     "Name": "Ecoli",
     "Plots": [1, 2, 3, 4, 5],
     "SimulationAllowed": true,
+    "Constants": {
+        "N0": 800,
+        "tau2": 55,
+        "V0": 1.5,
+        "Vt": 5,
+        "discount": 0.95,
+        "O2Concentration": 0.2096
+    },
     "Processing": {
         "mat": {
             "LoadType": "load",

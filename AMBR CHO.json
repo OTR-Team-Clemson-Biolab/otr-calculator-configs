@@ -1,6 +1,6 @@
 {
-    "Name": "CHO",
-    "Plots": [1, 2, 3, 4, 5],
+    "Name": "AMBR CHO",
+    "Plots": [1,3,4,5],
     "SimulationAllowed": true,
     "Constants": {
         "N0": 50,
@@ -11,45 +11,47 @@
         "O2Concentration": 0.2024
     },
     "Processing": {
-        "mat": {
-            "LoadType": "load",
-            "VariableName": "data",
-            "VariableType": "timeseries",
-            "PostScript": "CHO_PostScript",
+        "xlsx": {
+            "LoadType": "readtable",
+            "PreScript": "AMBRCHO_PreScript",
+            "PostScript": "AMBRCHO_PostScript",
             "Columns": {
                 "Time": {
                     "ColumnName": "Time"
                 },
-                "MassFlow": {
-                    "ColumnNum": 28,
-                    "ConversionFactor": 60
-                },
                 "Pressure": {
-                    "ColumnNum": 20,
-                    "ConversionFactor": 100000
+                    "ColumnName": "bioreactor pressure reading",
+                    "ConversionFactor": 100
                 },
-                "y3": {
-                    "ColumnNum": 17,
+                "y0": {
+                    "ColumnName": "inlet o2",
                     "ConversionFactor": 0.01
                 },
                 "Volume": {
-                    "ColumnNum": 29
+                    "ColumnName": "volume",
+                    "ConversionFactor": 0.001
+                },
+                "MassFlow": {
+                    "ColumnName": "total gas flow",
+                    "ConversionFactor": 0.06,
+                    "Comment": "Original units are mL/min converted to L/h"
+                },
+                "y3": {
+                    "ColumnName": "offgas o2",
+                    "ConversionFactor": 0.01
                 },
                 "Temperature": {
-                    "ColumnNum": 19,
+                    "ColumnName": "temperature",
                     "AdditionFactor": 273.15
                 },
-                "y0": {
-                    "Calculation": "0.2095 * (0.95 - (InputData.('50') / 100)) + (InputData.('50') / 100)"
-                },
-                "FeedPumpRate": {
-                    "ColumnNum": 46
+                "DissolvedOxygen": {
+                    "ColumnName": "do"
                 },
                 "StirSpeed": {
-                    "ColumnNum": 4
+                    "ColumnName": "stir speed"
                 },
-                "DissolvedOxygen": {
-                    "ColumnNum": 10
+                "temp_DateTime": {
+                    "ColumnName": "DateTime"
                 }
             }
         }
@@ -58,15 +60,7 @@
         {
             "Name": "Time (h)",
             "DataColumn": "Time",
-            "ConversionFactor": 0.00027777777777777777777777777778
-        },
-        {
-            "Name": "Feed Pump Rate (% Maximum)",
-            "DataColumn": "FeedPumpRate"
-        },
-        {
-            "Name": "Stir Speed (rpm)",
-            "DataColumn": "StirSpeed"
+            "ConversionFactor": 0.00027777777777777778
         },
         {
             "Name": "Pressure (Pa)",
@@ -90,10 +84,6 @@
             "DataColumn": "MassFlow"
         },
         {
-            "Name": "DO (%)",
-            "DataColumn": "DissolvedOxygen"
-        },
-        {
             "Name": "y3 (mol/mol)",
             "DataColumn": "y3"
         },
@@ -105,6 +95,14 @@
         {
             "Name": "Temp (K)",
             "DataColumn": "Temperature"
+        },
+        {
+            "Name": "Dissolved Oxygen (%)",
+            "DataColumn": "DissolvedOxygen"
+        },
+        {
+            "Name": "Stir Speed (rpm)",
+            "DataColumn": "StirSpeed"
         }
     ]
 }
