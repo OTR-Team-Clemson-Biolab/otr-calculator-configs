@@ -1,6 +1,6 @@
 {
     "Name": "Ecoli",
-    "Plots": [1, 2, 3, 4, 5],
+    "Plots": [1, 2, 3, 4, 5, 6],
     "SimulationAllowed": true,
     "Constants": {
         "N0": 800,
@@ -48,6 +48,9 @@
                 "Temperature": {
                     "ColumnName": "o2Temp_C",
                     "AdditionFactor": 273.15
+                },
+                "PreOTR": {
+                    "ColumnName": "otrHat_gPerLHr"
                 }
             }
         }
