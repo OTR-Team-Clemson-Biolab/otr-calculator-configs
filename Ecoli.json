@@ -1,6 +1,6 @@
 {
     "Name": "Ecoli",
-    "Plots": [1, 2, 3, 4, 5, 6],
+    "Plots": [1, 2, 3, 4, 5, 6, 7, 8, 9],
     "SimulationAllowed": true,
     "Constants": {
         "N0": 800,
@@ -51,6 +51,15 @@
                 },
                 "PreOTR": {
                     "ColumnName": "otrHat_gPerLHr"
+                },
+                "PreAlpha0": {
+                    "ColumnName": "alpha0BarHat_hr"
+                },
+                "PreAlpha1": {
+                    "ColumnName": "alpha1BarHat_hr"
+                },
+                "PrekLa": {
+                    "ColumnName": "kLaBarHat_hr"
                 }
             }
         }
@@ -106,6 +115,30 @@
         {
             "Name": "Temp (K)",
             "DataColumn": "Temperature"
+        },
+        {
+            "Name": "alpha0 Precomputed",
+            "DataColumn": "PreAlpha0"
+        },
+        {
+            "Name": "alpha0 Simulated",
+            "DataColumn": "Alpha0"
+        },
+        {
+            "Name": "alpha1 Precomputed",
+            "DataColumn": "PreAlpha1"
+        },
+        {
+            "Name": "alpha1",
+            "DataColumn": "Alpha1"
+        },
+        {
+            "Name": "kLa Precomputed",
+            "DataColumn": "PrekLa"
+        },
+        {
+            "Name": "kLa Simulated",
+            "DataColumn": "kLa"
         },
         {
             "Name": "Precomputed OTR RLS",
