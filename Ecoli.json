@@ -51,6 +51,15 @@
                 },
                 "PreOTR": {
                     "ColumnName": "otrHat_gPerLHr"
+                },
+                "Alpha0": {
+                    "ColumnName": "alpha0BarHat_hr"
+                },
+                "Alpha1": {
+                    "ColumnName": "alpha1BarHat_hr"
+                },
+                "kLa": {
+                    "ColumnName": "kLaBarHat_hr"
                 }
             }
         }
@@ -106,6 +115,18 @@
         {
             "Name": "Temp (K)",
             "DataColumn": "Temperature"
+        },
+        {
+            "Name": "alpha0",
+            "DataColumn": "Alpha0"
+        },
+        {
+            "Name": "alpha1",
+            "DataColumn": "Alpha1"
+        },
+        {
+            "Name": "kLa",
+            "DataColumn": "kLa"
         },
         {
             "Name": "Precomputed OTR RLS",
