@@ -106,6 +106,10 @@
         {
             "Name": "Temp (K)",
             "DataColumn": "Temperature"
+        },
+        {
+            "Name": "Precomputed OTR RLS",
+            "DataColumn": "PreOTR"
         }
     ]
 }
